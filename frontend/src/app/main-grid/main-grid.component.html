@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="card principal-card">
+    <div class="card-body">
+      <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="paginateData()" placeholder="Buscar por comerciante...">
+
+      <!-- Cambiado a un elemento select para seleccionar la categoría -->
+      <div class="category-selector">
+        <select class="form-control" [(ngModel)]="selectedCategory" (ngModelChange)="filterByCategory(selectedCategory)">
+          <option value="" selected>Todos</option>
+          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <div class="col-3 mt-3" *ngFor="let item of paginatedData">
+          <app-card [data]="item"></app-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="pagination" style="text-align: center;" *ngIf="paginatedData.length > 0">
+      <button class="btn " (click)="previousPage()"><<</button>
+      <span>{{ currentPage + 1 }} / {{ totalPages }}</span>
+      <button class="btn " (click)="nextPage()">>></button>
+    </div>
+  </div>
+</div>

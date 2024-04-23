@@ -1,0 +1,34 @@
+.pagination{
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.pagination button{
+    border-color: rgb(106, 178, 241);
+    color: rgb(1, 83, 83);
+    border-radius: 20px;
+    margin: 0 2%;
+    
+}
+.pagination button:hover{
+    border-color: rgb(122, 157, 190);
+    background-color: azure;
+    /* color: rgb(1, 83, 83);
+    border-radius: 20px;
+    margin: 0 2%; */
+    
+}
+
+.principal-card{
+    /* margin: 1% 0 5% 0;
+    padding: 2% ; */
+    -webkit-box-shadow: -6px 24px 46px -20px rgba(0,0,0,0.75);
+    -moz-box-shadow: -6px 24px 46px -20px rgba(0,0,0,0.75);
+    box-shadow: -6px 24px 46px -20px rgba(0,0,0,0.75);
+}
+
+.retail-search{
+    border:1px solid rgb(122, 157, 190);
+    border-radius: 5px;
+}

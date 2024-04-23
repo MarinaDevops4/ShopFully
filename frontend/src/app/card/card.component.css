@@ -1,0 +1,27 @@
+.card {
+  -webkit-box-shadow: 10px 10px 17px -12px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 17px -12px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 17px -12px rgba(0,0,0,0.75)
+}
+.retailer-name{
+  font-size: 14px;
+  text-align: center;
+ 
+}
+.title{
+  font-size: 19px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.card-img-top{
+  width: 100px;
+ margin-left: 3rem;
+}
+
+.fechas{
+  font-size: 14px;
+  font-weight: lighter;
+  font-style: italic;
+  margin-bottom: 0px;
+}
