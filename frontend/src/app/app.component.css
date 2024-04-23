@@ -1,3 +1,12 @@
 body{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-image: url('./../assets/img/bg3.jpg');
+    background-size: 100%; /* Opcional: ajusta el tamaño de la imagen al contenedor */
+    background-repeat: no-repeat; 
+        /* margin-bottom: 15px; */
+
+  
 }
+
