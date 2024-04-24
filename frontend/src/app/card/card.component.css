@@ -1,54 +1,71 @@
+/* Card Styling */
 .card {
-  -webkit-box-shadow: 10px 10px 17px -12px rgba(0,0,0,0.75);
-  -moz-box-shadow: 10px 10px 17px -12px rgba(0,0,0,0.75);
-  box-shadow: 10px 10px 17px -12px rgba(0,0,0,0.75)
+  /* Box shadow for a subtle depth effect */
+  box-shadow: 10px 10px 17px -12px rgba(0, 0, 0, 0.75);
 }
-.retailer-name{
+
+/* Retailer Name */
+.retailer-name {
+  /* Consistent font size for readability */
   font-size: 14px;
+  /* Center alignment for a balanced look */
   text-align: center;
- 
 }
-.title{
+
+/* Title */
+.title {
+  /* Slightly larger font size for emphasis */
   font-size: 19px;
+  /* Center alignment for a clear main heading */
   text-align: center;
+  /* Underline for additional emphasis */
   text-decoration: underline;
 }
 
-.card-img-top{
-  margin-bottom: 6px;
-
-}
-
-.fechas{
-  font-size: 14px;
-  font-weight: lighter;
-  font-style: italic;
-  margin-bottom: 0px;
-}
-
-.card-body {
-  padding: 20px;
-}
-
+/* Card Image */
 .card-img-top {
+  /* Consistent spacing below the image */
+  margin-bottom: 6px;
+  /* Width set to 100% for responsiveness */
   width: 100%;
+  /* Auto height for maintaining aspect ratio */
   height: auto;
+  /* Rounded corners for a more modern look */
   border-radius: 5px;
 }
 
+/* Dates */
+.fechas {
+  /* Consistent font size for readability */
+  font-size: 14px;
+  /* Lighter weight for a subtle appearance */
+  font-weight: lighter;
+  /* Italic style for emphasis */
+  font-style: italic;
+  /* Consistent spacing above the text */
+  margin-top: 5px;
+  /* Grayish color for subtle visibility */
+  color: #888;
+}
+
+/* Card Body Padding */
+.card-body {
+  /* Consistent padding for spacing within the card */
+  padding: 20px;
+}
+
+/* Shared Text Styles */
 .retailer-name,
 .title,
 .card-text {
+  /* Consistent spacing above these elements */
   margin-top: 10px;
 }
 
+/* Bold Text Styles */
 .retailer-name strong,
 .title strong,
 .card-text strong {
+  /* Darker color for stronger emphasis */
   color: #333;
-}
-
-.fechas {
-  margin-top: 5px;
-  color: #888;
 }

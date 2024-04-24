@@ -1,14 +1,13 @@
 body{
+    height: 100%;
+    max-height: 100vh; 
+    overflow-y: auto;
     margin: 0 auto;
     box-sizing: border-box;
-    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
-    background-image: url('./../assets/img/bg3.jpg');
-    /* background-size: 100%;  */
     background-size: cover;
     background-repeat: no-repeat; 
     font-family: 'Poppins', sans-serif;
-    background: #fafafa;
-        /* margin-bottom: 15px; */
+   
 
   
 }

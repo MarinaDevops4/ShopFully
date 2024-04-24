@@ -1,74 +1,59 @@
 
- <!-- Botón para desplegar el sidebar -->
- <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="toggleSidebar()">
+ <!-- Button to toggle the sidebar -->
+<button type="button" id="sidebarCollapse" class="btn btn-info" (click)="toggleSidebar()">
   <i class="fas fa-align-left"></i>
   <span>
-    <img src="../../assets/img/shopping-cart.png" width="auto" height="32px" alt="">
+    <img src="../../assets/img/shopping-cart.png" width="auto" height="32px" alt="Shopping Cart">
     {{ cartItems.length }}
   </span>
 </button>
 
-
 <!-- Sidebar -->
 <div class="wrapper" [ngClass]="{ 'active': sidebarOpen }">
-  <!-- Sidebar  -->
   <nav id="sidebar">
-      <div class="sidebar-header">
-          <h3>Cart ShopFully</h3>
-      </div>
-      <ul class="list-unstyled components">
-    <li lass="list-group-item list-group-item-action" *ngFor="let item of cartItems">
-      <img src="./assets/img/corazon.png" alt="" width="20px">    {{ item.title }} - {{ item.retailer }}
-          </li>
-      </ul>
+    <div class="sidebar-header">
+      <h3>Cart ShopFully</h3>
+    </div>
+    <ul class="list-unstyled components">
+      <ng-container *ngFor="let item of cartItems">
+        <li class="list-group-item list-group-item-action">
+          <img src="./assets/img/corazon.png" alt="Heart Icon" width="20px"> {{ item.title }} - {{ item.retailer }}
+        </li>
+      </ng-container>
+    </ul>
   </nav>
-  <div class="row">
-    <div class="col">
-      <div class="collapse" [ngClass]="{ 'show': sidebarOpen }" id="sidebar" >
-        <div class="bg-light border-right" id="sidebar-wrapper">
-          <!-- <div class="sidebar-heading">Carrito de Compras</div> -->
-          <div class="list-group list-group-flush">
-            <ng-container *ngFor="let item of cartItems">
-              <li class="list-group-item list-group-item-action">
-                <img src="./assets/img/corazon.png" alt="" width="26px">
-                {{ item.title }} - {{ item.retailer }}
-              </li>
-            </ng-container>
+</div>
+
+
+<div class="content">
+  <div class="card principal-card">
+    <div class="content-discounts">
+      <div class="card-body">
+        <!-- Search by retailer -->
+        <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="paginateData()" placeholder="Search by retailer...">
+        
+        <!-- Category selector -->
+        <div class="category-selector">
+          <select class="form-control" [(ngModel)]="selectedCategory" (ngModelChange)="filterByCategory(selectedCategory)">
+            <option value="" selected>All Categories</option>
+            <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+          </select>
+        </div>
+        
+        <!-- Discount cards -->
+        <div class="row">
+          <div class="col-lg-3 col-md-4 col-sm-6 mt-3" *ngFor="let item of paginatedData">
+            <app-card [data]="item"></app-card>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  
-</div>
-<div class="container">
-  
-  
-  <div class="card principal-card">
-    <div class="content-discounts">
-    <div class="card-body">
-      <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="paginateData()" placeholder="Buscar por comerciante...">
-
-      <!-- Cambiado a un elemento select para seleccionar la categoría -->
-      <div class="category-selector">
-        <select class="form-control" [(ngModel)]="selectedCategory" (ngModelChange)="filterByCategory(selectedCategory)">
-          <option value="" selected>All Categorys</option>
-          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
-        </select>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-6 mt-3" *ngFor="let item of paginatedData">
-          <app-card [data]="item"></app-card>
-        </div>
+      
+      <!-- Pagination -->
+      <div class="pagination" style="text-align: center;" *ngIf="paginatedData.length > 0">
+        <button class="btn" (click)="previousPage()"><<</button>
+        <span>{{ currentPage + 1 }} / {{ totalPages }}</span>
+        <button class="btn" (click)="nextPage()">>></button>
       </div>
     </div>
-
-    <div class="pagination" style="text-align: center;" *ngIf="paginatedData.length > 0">
-      <button class="btn " (click)="previousPage()"><<</button>
-      <span>{{ currentPage + 1 }} / {{ totalPages }}</span>
-      <button class="btn " (click)="nextPage()">>></button>
-    </div>
   </div>
-</div>
 </div>

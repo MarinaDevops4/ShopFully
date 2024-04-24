@@ -38,3 +38,5 @@ RShopFully empowers you to discover exciting offers and discounts, transforming 
 ## Usage
 Once both the backend and frontend servers are running, you can access the application in your browser. The frontend will communicate with the backend API to fetch offers and discounts from the CSV file and display them to the user in an Angular component.
 
+## Author
+This project was created by Marina Barcelo

@@ -27,8 +27,6 @@ export class CartService {
     const index = this.cartItems.findIndex(cartItem => cartItem.id === item.id);
     if (index !== -1) {
       this.cartItems.splice(index, 1);
-      // Actualizar el estado isLiked a false
-      // this.updateIsLikedState(false); // Marcar como no gustado
       this.saveCartItemsToLocalStorage();
       this.notifyCartUpdate();
     }

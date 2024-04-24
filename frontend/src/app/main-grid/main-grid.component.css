@@ -1,16 +1,20 @@
+body{
+    overflow: hidden;
+}
 
-/* @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #fafafa;
-} */
 .pagination{
     align-items: center;
     justify-content: center;
-    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+
     color: #c9e9e1;
     text-align: center;
-    /* background-color: #aeb5bb; */
+
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .pagination button{
@@ -22,51 +26,48 @@ body {
 }
 .pagination button:hover{
     border-color: rgb(122, 157, 190);
-    background-color: azure;
-    /* color: rgb(1, 83, 83);
-    border-radius: 20px;
-    margin: 0 2%; */
-    
+    background-color: azure;  
 }
 
 /* SCROLL BAR */
-/* Estilo de la barra de desplazamiento */
-/* Anchura y color de la barra */
+
 ::-webkit-scrollbar {
     width: 12px;
   }
-  
-  /* Estilo del 'pulgar' de la barra de desplazamiento */
+
   ::-webkit-scrollbar-thumb {
     background-color: #888;
     border-radius: 6px;
   }
   
-  /* Estilo de la pista (fondo) de la barra de desplazamiento */
+ 
   ::-webkit-scrollbar-track {
     background-color: #f1f1f1;
     border-radius: 6px;
   }
 
   
-.principal-card{
-    /* margin: 1% 0 5% 0;
-    padding: 2% ; */
+  .principal-card {
+    position: fixed;
+    bottom: 0; 
+    left: 5%; 
+    right: 0;
     -webkit-box-shadow: -6px 24px 46px -20px rgba(0,0,0,0.75);
     -moz-box-shadow: -6px 24px 46px -20px rgba(0,0,0,0.75);
     box-shadow: -6px 24px 46px -20px rgba(0,0,0,0.75);
-   background-color:  #8b988e;
-   border-color: #8594a39e;
-   margin-top: 15px;
-   border-radius: 15px 15px 0px 0px;
-
-  
-    /* overflow: auto; */
-    /* margin-bottom: 15px; */
+    background-color:  #8b988e;
+    border-color: #8594a39e;
+    margin-top: 15px;
+    border-radius: 15px 15px 0px 0px;
+    height: 100%;
+    max-height: 75vh; 
+    overflow-y: auto; 
+    max-width: 90%;
 }
 
+
 .content-discounts{
-    max-height: 492px;
+   
     overflow: auto;
     
 }
@@ -250,7 +251,7 @@ a.article:hover {
 #content {
     width: 100%;
     padding: 20px;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     transition: all 0.3s;
 }
 
