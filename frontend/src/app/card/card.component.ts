@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-card',
@@ -6,56 +7,43 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-  @Input() data: any;
-
-  isLiked: boolean = false;
-  favorites: string[] = [];
-
-  constructor() {}
-
-  ngOnInit(): void {
-    this.loadFavorites();  
-  }
-
-  youLikeIt(): void {
-    this.isLiked = !this.isLiked;
-    if (this.isLiked) {
-      console.log(this.data.id);
-      this.addToFavorites(this.data.id);
-    } else {
-      this.removeFromFavorites(this.data.id);
+ 
+    @Input() data: any; // Asegúrate de que los datos del input incluyan un 'id' único por cada ítem
+  
+    isLiked: boolean = false;
+    cartItems: any[] = [];
+  cdRef: any;
+  
+    constructor(private cartService: CartService) {}
+  
+    ngOnInit(): void {
+   
     }
-  }
-
-  addToFavorites(itemId: string): void {
-    if (!this.favorites.includes(itemId)) {
-      this.favorites.push(itemId);
-      var items;
-      for(items in this.favorites){
-        console.log(this.favorites[items]);
+  
+    youLikeIt(): void {
+      this.isLiked = !this.isLiked;
+      if (this.isLiked) {
+        this.cartService.addToCart(this.data); // Usar el servicio de carrito
+      } else {
+        this.cartService.clearCart(); // Limpia todo el carrito, considera cambiar esto si no es el comportamiento deseado
       }
-      localStorage.setItem('favorites', JSON.stringify(this.favorites));
-      console.log('Added to favorites:', this.favorites);
+    }
+  
+    addToCart(item: any): void {
+      this.cartItems.push(item);
+      console.log('Current cart:', this.cartItems);
+    }
+    clearCart(): void {
+      this.cartItems = [];
+    }
+
+    getCartItems(): any[] {
+      return this.cartItems;
+    }
+
+    updateCart() {
+      this.cartItems = this.cartService.getCartItems();
+      this.cdRef.detectChanges(); // Forzar la actualización de la vista
     }
   }
 
-  removeFromFavorites(itemId: string): void {
-    const index = this.favorites.indexOf(itemId);
-    if (index !== -1) {
-      this.favorites.splice(index, 1);
-      localStorage.setItem('favorites', JSON.stringify(this.favorites));
-      console.log('Removed from favorites:', this.favorites);
-    }
-  }
-  
-  loadFavorites(): void {
-    const storedFavorites = localStorage.getItem('favorites');
-    if (storedFavorites) {
-      this.favorites = JSON.parse(storedFavorites);
-      console.log('Loaded favorites:', this.favorites);
-      // Comprueba si el ID actual está en los favoritos y establece isLiked como true si es así
-      this.isLiked = this.favorites.includes(this.data.id);
-    }
-  }
-  
-}

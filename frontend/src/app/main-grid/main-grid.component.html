@@ -1,4 +1,13 @@
 <div class="container">
+   <!-- Sección para mostrar los favoritos -->
+   <div class="cart">
+    <h2>Carrito de Compras</h2>
+    <ul>
+      <li *ngFor="let item of cartItems">
+        {{ item.title }} - {{ item.retailer }}
+      </li>
+    </ul>
+  </div>
   <div class="card principal-card">
     <div class="content-discounts">
     <div class="card-body">

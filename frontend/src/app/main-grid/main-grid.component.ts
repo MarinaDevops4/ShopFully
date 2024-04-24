@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from '../services/cart.service';
 import { DataService } from '../services/data-service.service';
 
 @Component({
@@ -14,21 +15,26 @@ export class MainGridComponent implements OnInit {
   searchTerm: string = '';
   selectedCategory: string = ''; // Variable para almacenar la categoría seleccionada
   categories: string[] = []; // Array para almacenar las categorías únicas
+  cartItems: any[] = [];
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private cartService: CartService) { }
 
   ngOnInit() {
     this.dataService.getData().subscribe(
       (response: any) => {
-        this.data = response; 
-        this.extractCategories(); // Extrae las categorías únicas
+        this.data = response;
+        this.extractCategories(); // Asegúrate de que se extraen después de asignar los datos
         this.paginateData();
       },
       (error: any) => {
         console.error('Error al obtener los datos:', error);
       }
     );
+    this.cartItems = this.cartService.getCartItems();
+    console.log('Cart items on init:', this.cartItems);
   }
+  
+
 
   extractCategories() {
     // Extrae las categorías únicas de los datos
