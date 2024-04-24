@@ -15,8 +15,8 @@
 }
 
 .card-img-top{
-  width: 100px;
- margin-left: 3rem;
+  margin-bottom: 6px;
+
 }
 
 .fechas{
@@ -24,4 +24,31 @@
   font-weight: lighter;
   font-style: italic;
   margin-bottom: 0px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.retailer-name,
+.title,
+.card-text {
+  margin-top: 10px;
+}
+
+.retailer-name strong,
+.title strong,
+.card-text strong {
+  color: #333;
+}
+
+.fechas {
+  margin-top: 5px;
+  color: #888;
 }

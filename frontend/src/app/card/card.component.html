@@ -1,19 +1,19 @@
 
         <div class="card" style="">
             <div class="card-body">
-              <img class="card-img-top" src="./assets/img/product.png"  alt="Card image cap">
-              <p class="card-text retailer-name"><strong>{{ data.retailer }}</strong></p>
-              <p class="card-text title"><strong>{{ data.title }}</strong></p>
-              <p class="card-text"><strong>Category:</strong> {{ data.category }}</p>
-              <p class="card-text fechas"><strong>Start Date:</strong> {{ data.start_date }}</p>
-              <p class="card-text fechas"><strong>End Date:</strong> {{ data.end_date }}</p>
+              <img [src]="selectedImage" alt="Product Image" width="100%">
+              <div class="card-text retailer-name"><strong>{{ data.retailer }}</strong></div>
+              <div class="card-text title"><strong>{{ data.title }}</strong></div>
+              <div class="card-text"><strong>Category:</strong> {{ data.category }}</div>
+              <div class="card-text fechas"><strong>Start Date:</strong> {{ data.start_date }}</div>
+              <div class="card-text fechas"><strong>End Date:</strong> {{ data.end_date }}</div>
         
             </div>
             <div class="card-footer text-muted">
               <img *ngIf="!isLiked" src="./assets/img/amor.png" alt="" width="32px" (click)="youLikeIt()">
               <img *ngIf="isLiked" src="./assets/img/corazon.png" alt="" width="32px" (click)="youLikeIt()">
             </div>
-            <!-- <button (click)="clearCart()">Vaciar Carrito</button> -->
+           
           </div>
 
       

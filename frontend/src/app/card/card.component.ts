@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { CartService } from '../services/cart.service';
 
 @Component({
@@ -7,43 +8,82 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
+  @Input() data: any;
+  isLiked: boolean = false;
+  cartItems: any[] = [];
+  images: string[] = [];
+  selectedImage: string = '';
+  isLikedUpdated: Subject<boolean> = new Subject<boolean>();
+
  
-    @Input() data: any; // Asegúrate de que los datos del input incluyan un 'id' único por cada ítem
-  
-    isLiked: boolean = false;
-    cartItems: any[] = [];
-  cdRef: any;
-  
-    constructor(private cartService: CartService) {}
-  
-    ngOnInit(): void {
-   
-    }
-  
-    youLikeIt(): void {
-      this.isLiked = !this.isLiked;
-      if (this.isLiked) {
-        this.cartService.addToCart(this.data); // Usar el servicio de carrito
-      } else {
-        this.cartService.clearCart(); // Limpia todo el carrito, considera cambiar esto si no es el comportamiento deseado
-      }
-    }
-  
-    addToCart(item: any): void {
-      this.cartItems.push(item);
-      console.log('Current cart:', this.cartItems);
-    }
-    clearCart(): void {
-      this.cartItems = [];
-    }
 
-    getCartItems(): any[] {
-      return this.cartItems;
-    }
+  constructor(private cartService: CartService, private cdRef: ChangeDetectorRef) {
 
-    updateCart() {
-      this.cartItems = this.cartService.getCartItems();
-      this.cdRef.detectChanges(); // Forzar la actualización de la vista
-    }
+    this.images = [
+      '../../assets/img/products/big_1042610.jpg',
+      '../../assets/img/products/big_1079318.jpg',
+      '../../assets/img/products/big_1141764.jpg',
+      '../../assets/img/products/big_1147543.jpg',
+      '../../assets/img/products/big_1152789.jpg',
+      '../../assets/img/products/big_1155738.jpg',
+      '../../assets/img/products/big_1154974.jpg',
+      '../../assets/img/products/big_1164460.jpg',
+      '../../assets/img/products/big_1163891.jpg',
+    ];
   }
 
+  ngOnInit(): void {
+    const cartItems = this.cartService.getCartItems();
+    const foundItem = cartItems.find(item => item.id === this.data.id);
+    this.isLiked = foundItem ? true : false;
+
+    this.selectedImage = this.getRandomImage();
+   
+  
+    
+  }
+
+  
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.getRandomImage();
+    });
+  }
+
+  updateIsLikedState(isLiked: boolean): void {
+    this.isLikedUpdated.next(isLiked);
+  }
+
+  youLikeIt(): void {
+    this.isLiked = !this.isLiked;
+    if (this.isLiked) {
+      this.cartService.addToCart(this.data);
+    } else {
+      this.cartService.removeFromCart(this.data);
+    }
+   // Check if cart is empty after adding or removing
+  
+ 
+  //  this.isLikedUpdated.next({ isLiked: this.isLiked, isEmptyCart });
+
+  }
+
+  getRandomImage(): string {
+    var randomImage = '';
+    if (this.images.length === 0) {
+      // Si está vacío, devuelve la ruta de una imagen por defecto o una ruta válida
+      return '../../assets/img/products/big_1163891.jpg';
+    }else{
+    // Genera un índice aleatorio dentro del rango de longitud de this.images
+    const randomIndex = Math.floor(Math.random() * this.images.length);
+    // Obtiene la imagen aleatoria del array usando el índice generado aleatoriamente
+     randomImage = this.images[randomIndex];
+
+    }
+  
+  
+    
+    return randomImage;
+  }
+  
+}

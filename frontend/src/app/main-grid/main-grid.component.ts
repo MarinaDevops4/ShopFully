@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { DataService } from '../services/data-service.service';
 
+declare var $: any;
 @Component({
   selector: 'app-main-grid',
   templateUrl: './main-grid.component.html',
@@ -13,17 +14,28 @@ export class MainGridComponent implements OnInit {
   currentPage: number = 0;
   itemsPerPage: number = 10;
   searchTerm: string = '';
-  selectedCategory: string = ''; // Variable para almacenar la categoría seleccionada
-  categories: string[] = []; // Array para almacenar las categorías únicas
+  selectedCategory: string = ''; 
+  categories: string[] = []; 
   cartItems: any[] = [];
+ 
 
-  constructor(private dataService: DataService, private cartService: CartService) { }
+  constructor(private dataService: DataService, private cartService: CartService, private renderer: Renderer2) { }
+  sidebarOpen:boolean = false;
 
-  ngOnInit() {
+  toggleSidebar(): void {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) {
+      sidebar.classList.toggle('active');
+    }
+  }
+  ngOnInit() :void{
+   
+
+
     this.dataService.getData().subscribe(
       (response: any) => {
         this.data = response;
-        this.extractCategories(); // Asegúrate de que se extraen después de asignar los datos
+        this.extractCategories(); 
         this.paginateData();
       },
       (error: any) => {
@@ -32,8 +44,29 @@ export class MainGridComponent implements OnInit {
     );
     this.cartItems = this.cartService.getCartItems();
     console.log('Cart items on init:', this.cartItems);
+    console.log('Cart empty: ', this.cartItems.length);
+
+
+  
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar && !sidebar.classList.contains('active')) {
+      this.renderer.addClass(sidebar, 'active');
+    }
+   
   }
   
+  removeFromCart(item: any): void {
+    // Eliminar el producto del carrito
+    const index = this.cartItems.findIndex(cartItem => cartItem.id === item.id);
+    if (index !== -1) {
+      this.cartItems.splice(index, 1);
+      // Actualizar el estado isLiked a false
+      item.isLiked = false;
+      // Guardar los cambios en el almacenamiento local
+      this.cartService.saveCartItemsToLocalStorage();
+      // this.cartService.updateIsLikedState(item.isLiked);
+    }
+  }
 
 
   extractCategories() {
@@ -99,5 +132,6 @@ export class MainGridComponent implements OnInit {
     return Math.ceil(totalFilteredData.length / this.itemsPerPage);
   }
 
+ 
  
 }

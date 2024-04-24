@@ -1,13 +1,49 @@
-<div class="container">
-   <!-- Sección para mostrar los favoritos -->
-   <div class="cart">
-    <h2>Carrito de Compras</h2>
-    <ul>
-      <li *ngFor="let item of cartItems">
-        {{ item.title }} - {{ item.retailer }}
-      </li>
-    </ul>
+
+ <!-- Botón para desplegar el sidebar -->
+ <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="toggleSidebar()">
+  <i class="fas fa-align-left"></i>
+  <span>
+    <img src="../../assets/img/shopping-cart.png" width="auto" height="32px" alt="">
+    {{ cartItems.length }}
+  </span>
+</button>
+
+
+<!-- Sidebar -->
+<div class="wrapper" [ngClass]="{ 'active': sidebarOpen }">
+  <!-- Sidebar  -->
+  <nav id="sidebar">
+      <div class="sidebar-header">
+          <h3>Cart ShopFully</h3>
+      </div>
+      <ul class="list-unstyled components">
+    <li lass="list-group-item list-group-item-action" *ngFor="let item of cartItems">
+      <img src="./assets/img/corazon.png" alt="" width="20px">    {{ item.title }} - {{ item.retailer }}
+          </li>
+      </ul>
+  </nav>
+  <div class="row">
+    <div class="col">
+      <div class="collapse" [ngClass]="{ 'show': sidebarOpen }" id="sidebar" >
+        <div class="bg-light border-right" id="sidebar-wrapper">
+          <!-- <div class="sidebar-heading">Carrito de Compras</div> -->
+          <div class="list-group list-group-flush">
+            <ng-container *ngFor="let item of cartItems">
+              <li class="list-group-item list-group-item-action">
+                <img src="./assets/img/corazon.png" alt="" width="26px">
+                {{ item.title }} - {{ item.retailer }}
+              </li>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  
+</div>
+<div class="container">
+  
+  
   <div class="card principal-card">
     <div class="content-discounts">
     <div class="card-body">
@@ -16,13 +52,13 @@
       <!-- Cambiado a un elemento select para seleccionar la categoría -->
       <div class="category-selector">
         <select class="form-control" [(ngModel)]="selectedCategory" (ngModelChange)="filterByCategory(selectedCategory)">
-          <option value="" selected>Todos</option>
+          <option value="" selected>All Categorys</option>
           <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
         </select>
       </div>
 
       <div class="row">
-        <div class="col-3 mt-3" *ngFor="let item of paginatedData">
+        <div class="col-lg-3 col-md-4 col-sm-6 mt-3" *ngFor="let item of paginatedData">
           <app-card [data]="item"></app-card>
         </div>
       </div>
