@@ -14,15 +14,15 @@ RShopFully empowers you to discover exciting offers and discounts, transforming 
 ## Install and Use
 
 ## Front-end 
-1. Clone the repository:
+**1.Clone the repository:** 
    git clone https://github.com/MarinaDevops4/ShopFully.git
-2. Navigate to the frontend directory: 
+**2.Navigate to the frontend directory:**  
    cd shopfully/frontend
-3. Install dependencies:
+**3.Install dependencies:**
    npm install
-4.Start the application:
+**4.Start the application:**
    ng serve
-5. The frontend should now be runnig at http://localhost:4200/
+**5. The frontend should now be runnig at http://localhost:4200/**
 
 ## Back-end 
 **1.Clone the repository:** 
