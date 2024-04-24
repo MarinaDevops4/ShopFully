@@ -1,69 +1,39 @@
-Aquí tienes el texto formateado como código de markdown para que se vea correctamente en el README.md:
-
-```markdown
 # ShopFully
+RShopFully empowers you to discover exciting offers and discounts, transforming your shopping experience. It seamlessly integrates data from a CSV file into a user-friendly Angular front-end, powered by a robust Node.js back-end for potential future data management needs.
+![alt text](shopfully.png)
 
-Reader from an CSV the offers and discounts and show them to the user in a Angular component
 
-## Instalación y Uso
+## Key Features:
 
-### Backend (Node.js / Express):
+- **CSV Data Import:** Import offers and discounts from a CSV file for effortless data management.
+- **Intuitive Interface:** A well-designed front-end component showcases the imported data in a clear and user-friendly manner.
+- **User-Friendly Navigation (Optional):** Implement filtering and search functionality for refined user experiences (based on your implementation).
+- **Node.js Back-end (Optional):** The back-end facilitates data communication and lays the foundation for potential server-side features (consider implementing when needed).
 
-#### Instalación de dependencias:
+## Install and Use
 
-1. Asegúrate de tener Node.js instalado en tu sistema.
-2. Navega hasta el directorio del proyecto backend en tu terminal.
-3. Ejecuta el siguiente comando para instalar las dependencias del proyecto:
-   
-   ```npm install```
+## Front-end 
+1. Clone the repository:
+   git clone https://github.com/MarinaDevops4/ShopFully.git
+2. Navigate to the frontend directory: 
+   cd shopfully/frontend
+3. Install dependencies:
+   npm install
+4.Start the application:
+   ng serve
+5. The frontend should now be runnig at http://localhost:4200/
 
-#### Compilación (opcional):
+## Back-end 
+**1.Clone the repository:** 
+   git clone https://github.com/MarinaDevops4/ShopFully.git
+**2.Navigate to the frontend directory:** 
+   cd shopfully/server
+**3.Install dependencies:**
+   npm install
+**4.Start the application:**
+   nodemon app.js
+**5. The frontend should now be runnig at http://localhost:3000/**
 
-- Si tienes algún paso de compilación necesario para el backend, asegúrate de configurar el script de compilación en el `package.json` y ejecútalo según sea necesario. Por ejemplo:
-   
-   ```npm run build```
-
-#### Ejecución del servidor:
-
-- Una vez que las dependencias estén instaladas y cualquier paso de compilación haya sido completado, puedes iniciar el servidor Node.js ejecutando el siguiente comando:
-
-   ```npm start```
-
-   Esto iniciará el servidor backend y lo pondrá en funcionamiento.
-
-### Frontend (Angular):
-
-#### Instalación de dependencias:
-
-1. Asegúrate de tener Node.js instalado en tu sistema.
-2. Navega hasta el directorio del proyecto frontend en tu terminal.
-3. Ejecuta el siguiente comando para instalar las dependencias del proyecto:
-  
-   ```npm install```
-
-#### Compilación:
-
-- Para compilar el proyecto Angular, ejecuta el siguiente comando:
-   
-   ```npm run build```
-
-   Esto generará los archivos estáticos optimizados en el directorio `dist/`.
-
-#### Ejecución del servidor web (opcional):
-
-- Si deseas ver la aplicación en un servidor web local, puedes utilizar herramientas como `http-server`, `live-server`, o simplemente servir los archivos estáticos con un servidor web como Apache o Nginx.
-- Por ejemplo, puedes usar `http-server` ejecutando el siguiente comando en el directorio `dist/`:
-  
-   ```npm install -g http-server``` 
-
-   # Instala http-server globalmente si aún no lo has hecho
-  
-   ```http-server```
-
-   Esto iniciará un servidor web local y te dará una URL (por ejemplo, `http://localhost:8080`) donde puedes acceder a la aplicación frontend compilada.
-
----
-
-Siguiendo estos pasos, podrás compilar y ejecutar tanto el backend como el frontend de tu aplicación. Asegúrate de verificar cualquier mensaje de error o advertencia que puedas ver durante estos pasos y abordarlos según sea necesario.
-```
+## Usage
+Once both the backend and frontend servers are running, you can access the application in your browser. The frontend will communicate with the backend API to fetch offers and discounts from the CSV file and display them to the user in an Angular component.
 
