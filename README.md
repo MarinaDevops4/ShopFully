@@ -1,5 +1,6 @@
 # ShopFully
 RShopFully empowers you to discover exciting offers and discounts, transforming your shopping experience. It seamlessly integrates data from a CSV file into a user-friendly Angular front-end, powered by a robust Node.js back-end for potential future data management needs.
+![alt text](image.png)
 ![alt text](shopfully.png)
 
 
